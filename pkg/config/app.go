@@ -10,7 +10,8 @@ var (
 )
 
 func Connect() {
-	d, err := gorm.Open("mysql", "root:P0k3m0n0m3g@/simplerest?charset=utf8&parseTime=True&loc=Local")
+	// establish connection to mysql
+	d, err := gorm.Open("mysql", "root:P0k3m0n0m3g@@/hush_db?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
 		panic(err)
 	}
@@ -18,5 +19,6 @@ func Connect() {
 }
 
 func GetDB() *gorm.DB {
+	// get database address
 	return db
 }

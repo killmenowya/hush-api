@@ -1,4 +1,4 @@
-module github.com/killmwnowya/hush-api
+module github.com/killmenowya/hush-api
 
 go 1.21.5
 

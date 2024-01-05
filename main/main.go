@@ -11,6 +11,7 @@ import (
 
 func main() {
 	r := mux.NewRouter()
+	// passess control to hush-routes.go
 	routes.RegisterHushRoutes(r)
 	http.Handle("/", r)
 	log.Fatal(http.ListenAndServe("localhost:9010", r))
