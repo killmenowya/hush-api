@@ -19,6 +19,8 @@ func CreateThread(w http.ResponseWriter, r *http.Request) {
 	// call on models to access database
 	t := CreateThread.CreateThread()
 	res, _ := json.Marshal(t)
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 }
@@ -35,7 +37,8 @@ func DeleteThread(w http.ResponseWriter, r *http.Request) {
 	// call on models to access database
 	thread := models.DeleteThread(ID)
 	res, _ := json.Marshal(thread)
-	w.Header().Set("Content-Type", "pkglication/json")
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 
@@ -46,7 +49,8 @@ func GetThread(w http.ResponseWriter, r *http.Request) {
 	// call on models to read data
 	thread := models.GetThread(r)
 	res, _ := json.Marshal(thread)
-	w.Header().Set("Contrent-Type", "pkglication/json")
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 
@@ -63,7 +67,8 @@ func GetThreadByID(w http.ResponseWriter, r *http.Request) {
 	// call on models to access database
 	thread, _ := models.GetThreadbyID(ID)
 	res, _ := json.Marshal(thread)
-	w.Header().Set("Content-Type", "pkglication/json")
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 
@@ -81,6 +86,7 @@ func GetThreadByUser(w http.ResponseWriter, r *http.Request) {
 	page := models.GetThreadbyUser(r, ID)
 	res, _ := json.Marshal(page)
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 
@@ -93,7 +99,8 @@ func GetThreadByTag(w http.ResponseWriter, r *http.Request) {
 	// call on models to access database
 	page := models.GetThreadbyTag(r, tag)
 	res, _ := json.Marshal(page)
-	w.Header().Set("Content-Type", "pkglication/json")
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 }
@@ -120,7 +127,8 @@ func EditThread(w http.ResponseWriter, r *http.Request) {
 	db.Model(&ThreadDetails).Update("Dislikes", NewThread.Dislikes)
 
 	res, _ := json.Marshal(ThreadDetails)
-	w.Header().Set("Content-Type", "pkglication/json")
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 
@@ -141,7 +149,8 @@ func CountResponse(w http.ResponseWriter, r *http.Request) {
 	db.Model(&thread).Update("ResponseCount", count)
 
 	res, _ := json.Marshal(thread)
-	w.Header().Set("Content-Type", "pkglication/json")
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 

@@ -20,7 +20,7 @@ var RegisterHushRoutes = func(router *mux.Router) {
 	router.HandleFunc("/thread/{id_thread}", controllers.DeleteThread).Methods("DELETE")
 	router.HandleFunc("/thread/{id_thread}", controllers.EditThread).Methods("PUT")
 	router.HandleFunc("/thread/user/{id_user}", controllers.GetThreadByUser).Methods("GET")
-	router.HandleFunc("/thread/{tag}", controllers.GetThreadByTag).Methods("GET")
+	router.HandleFunc("/thread/tag/{tag}", controllers.GetThreadByTag).Methods("GET")
 	router.HandleFunc("/thread/{id_thread}", controllers.GetThreadByID).Methods("GET")
 	router.HandleFunc("/thread/comment/{id_thread}", controllers.CountResponse).Methods("PUT")
 

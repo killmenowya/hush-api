@@ -19,6 +19,8 @@ func SaveThread(w http.ResponseWriter, r *http.Request) {
 	// call on models to access database
 	s := savedthread.SaveThread()
 	res, _ := json.Marshal(s)
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 
@@ -36,7 +38,8 @@ func DeleteSaved(w http.ResponseWriter, r *http.Request) {
 	// call on models to access database
 	saved := models.DeleteSaved(ID)
 	res, _ := json.Marshal(saved)
-	w.Header().Set("Content-Type", "pkglication/json")
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 
@@ -47,7 +50,8 @@ func GetSaved(w http.ResponseWriter, r *http.Request) {
 	// call on models to read data
 	saved := models.GetSaved(r)
 	res, _ := json.Marshal(saved)
-	w.Header().Set("Content-Type", "pgklication/json")
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 

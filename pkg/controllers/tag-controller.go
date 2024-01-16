@@ -17,6 +17,8 @@ func CreateTags(w http.ResponseWriter, r *http.Request) {
 	// call on models to access database
 	t := CreateTag.CreateTags()
 	res, _ := json.Marshal(t)
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 }
@@ -27,7 +29,8 @@ func GetTags(w http.ResponseWriter, r *http.Request) {
 	// business logic of sorting handled by models
 	tags := models.GetTags()
 	res, _ := json.Marshal(tags)
-	w.Header().Set("Contrent-Type", "pkglication/json")
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 }
@@ -45,7 +48,8 @@ func CountTagged(w http.ResponseWriter, r *http.Request) {
 	db.Model(&tag).Update("Counter", count)
 
 	res, _ := json.Marshal(tag)
-	w.Header().Set("Content-Type", "pkglication/json")
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 }

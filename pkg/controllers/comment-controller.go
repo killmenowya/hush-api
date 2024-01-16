@@ -21,6 +21,8 @@ func CreateComment(w http.ResponseWriter, r *http.Request) {
 	// call on models to access database
 	c := CreateComment.CreateComment()
 	res, _ := json.Marshal(c)
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 }
@@ -37,7 +39,8 @@ func DeleteComment(w http.ResponseWriter, r *http.Request) {
 	// call on models to access database
 	comment := models.DeleteComment(ID)
 	res, _ := json.Marshal(comment)
-	w.Header().Set("Content-Type", "pkglication/json")
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 
@@ -55,7 +58,8 @@ func GetComment(w http.ResponseWriter, r *http.Request) {
 	// call on models to access database
 	comment := models.GetCommentbyID(ID)
 	res, _ := json.Marshal(comment)
-	w.Header().Set("Content-Type", "pkglication/json")
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 
@@ -81,7 +85,8 @@ func EditComment(w http.ResponseWriter, r *http.Request) {
 	db.Model(&CommentDetails).Update("Dislikes", NewComment.Dislikes)
 
 	res, _ := json.Marshal(CommentDetails)
-	w.Header().Set("Content-Type", "pkglication/json")
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 
